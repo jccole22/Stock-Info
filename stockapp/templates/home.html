@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% if api %}
+    {% if api == "Error in call" %}
+        There was a problem with api call. Please try again.
+    {% else %}
+
+        <h1>{{ api.companyName }}</h1><br>
+        Price: ${{ api.latestPrice }}<br>
+        Previous Close: ${{ api.previousClose }}<br>
+        Market Cap: ${{ api.marketCap }}<br>
+        Year to Date Change: {{ api.ytdChange }}<br>
+        Week 52 High: ${{ api.week52High }}<br>
+        Week 52 Low: ${{ api.week52Low }}<br>
+        
+    {% endif %}
+{% endif %}
+
+{% endblock %}
