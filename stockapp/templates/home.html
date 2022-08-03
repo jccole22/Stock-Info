@@ -2,6 +2,10 @@
 {% block content %}
 
 
+{% if stock_input %}
+    {{ stock_input }}
+{% endif %}
+
 {% if api %}
     {% if api == "Error in call" %}
         There was a problem with api call. Please try again.

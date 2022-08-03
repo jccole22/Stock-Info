@@ -26,19 +26,36 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
-                        
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_stock' %}">Add Stock</a>
+                </li>
+
             </ul>
             <form action="{% url 'home' %}" method="POST" class="form-inline my-2 my-lg-0">
                 {% csrf_token %}
-                <input class="form-control mr-sm-2" type="search" placeholder="Company" aria-label="Search">
+                <input name="stock_input" class="form-control mr-sm-2" type="search" placeholder="Company"
+                    aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Find Stock</button>
             </form>
         </div>
     </nav>
     <div class="container">
-    {% block content %}
 
-    {% endblock %}
+        {% if messages %}
+        {%for message in messages%}
+        <div class="alert alert-warning alert-dismissable" role="alert">
+            <button class="close" data-dismiss="alert">
+                <small><sup>x</sup></small>
+            </button>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+
+        {% block content %}
+
+        {% endblock %}
     </div>
 
     <!-- Optional JavaScript -->
